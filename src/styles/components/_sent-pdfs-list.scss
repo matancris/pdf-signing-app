@@ -1,0 +1,78 @@
+.sent-pdfs-list {
+  padding: 20px;
+
+  .pdfs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .pdf-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .pdf-info {
+      h3 {
+        margin: 0 0 10px;
+        color: #333;
+      }
+
+      .status {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+
+        &.signed {
+          background: #e3f2fd;
+          color: #1976d2;
+        }
+
+        &.pending {
+          background: #fff3e0;
+          color: #f57c00;
+        }
+      }
+    }
+
+    .pdf-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+
+        &:first-child {
+          background: #e3f2fd;
+          color: #1976d2;
+        }
+
+        &:last-child {
+          background: #1976d2;
+          color: white;
+        }
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+.delete-button {
+  background-color: #ff4444;
+  color: white;
+
+  &:hover {
+    background-color: #cc0000;
+  }
+} 

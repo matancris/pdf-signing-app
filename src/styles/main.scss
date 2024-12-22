@@ -1,0 +1,23 @@
+// Forward declarations must come first
+@forward './components/pdf-uploader';
+@forward './components/pdf-viewer';
+@forward './components/signature-pad';
+@forward './components/sent-pdfs-list';
+@forward './components/send-dialog';
+@forward './components/signing-page';
+
+// Then @use statements
+@use 'base/variables' as *;
+@use 'base/reset';
+@use 'base/typography';
+@use 'components/pdf-uploader';
+@use 'components/pdf-viewer';
+@use 'components/signature-pad';
+@use 'components/sent-pdfs-list';
+@use 'components/send-dialog';
+@use 'components/modal';
+
+// Font import at root level
+:root {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+} 

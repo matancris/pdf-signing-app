@@ -1,0 +1,42 @@
+@use '../base/variables' as *;
+
+.signature-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $spacing-xl auto;
+  max-width: 500px;
+
+  .signature-canvas {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: white;
+  }
+
+  .signature-buttons {
+    margin-top: $spacing-md;
+    display: flex;
+    gap: $spacing-md;
+
+    button {
+      padding: $spacing-sm $spacing-md;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      
+      &:first-child {
+        background-color: $danger-color;
+        color: white;
+      }
+
+      &:last-child {
+        background-color: $success-color;
+        color: white;
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+} 

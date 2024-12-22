@@ -1,0 +1,174 @@
+.pdf-viewer {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 850px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+    border-radius: 8px;
+  }
+
+  .pdf-controls {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    button {
+      padding: 8px 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      
+      &:hover:not(:disabled) {
+        background: #f5f5f5;
+        border-color: #d0d0d0;
+      }
+    }
+
+    span {
+      margin: 0 10px;
+      font-weight: 500;
+      color: #444;
+    }
+  }
+  
+  .pdf-container {
+    position: relative;
+    padding: 24px;
+    background: #fff;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
+
+    .react-pdf__Document {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .react-pdf__Page {
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        
+        canvas {
+          max-width: 100%;
+          height: auto !important;
+        }
+      }
+    }
+  }
+
+  .signature-placement-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: crosshair;
+    z-index: 10;
+    background: rgba(33, 150, 243, 0.05);
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(33, 150, 243, 0.1);
+    }
+
+    &::before {
+      content: 'Click anywhere to place signature';
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2196f3;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .signature-frame {
+      position: absolute;
+      width: 200px;
+      height: 80px;
+      border: 2px dashed #2196f3;
+      border-radius: 4px;
+      background: rgba(33, 150, 243, 0.1);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: pulse 2s infinite;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+    }
+  }
+
+  .signature-image {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.signature-placeholder {
+  position: absolute;
+  padding: 15px 25px;
+  border: 2px dashed #2196f3;
+  border-radius: 4px;
+  background: rgba(33, 150, 243, 0.1);
+  color: #1976d2;
+  font-size: 14px;
+  font-weight: 500;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  
+  @media (max-width: 768px) {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  
+  &::before {
+    content: '✒️';
+    margin-right: 8px;
+  }
+}
+
+.signature-image {
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+} 

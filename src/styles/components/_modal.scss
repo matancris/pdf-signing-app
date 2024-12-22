@@ -1,0 +1,131 @@
+.modal {
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.2s ease-out;
+    padding: 20px;
+  }
+
+  &-content {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 1000px;
+    height: calc(100vh - 40px);
+    position: relative;
+    animation: slideDown 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--color-gray-100);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+    color: var(--color-gray-600);
+
+    &:hover {
+      background: var(--color-gray-200);
+      transform: rotate(90deg);
+    }
+  }
+
+  &-header {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--color-gray-50);
+    border-bottom: 1px solid var(--color-gray-200);
+    flex-shrink: 0;
+  }
+
+  &-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin: 0;
+  }
+
+  &-body {
+    flex: 1;
+    position: relative;
+    height: calc(100% - 60px);
+    
+    .pdf-viewer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      
+      .pdf-controls {
+        padding: var(--spacing-md);
+        background: var(--color-gray-50);
+        border-bottom: 1px solid var(--color-gray-200);
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+      }
+
+      .pdf-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: auto;
+        padding: var(--spacing-md);
+
+        canvas {
+          max-width: 100% !important;
+          max-height: 100% !important;
+          width: auto !important;
+          height: auto !important;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 
